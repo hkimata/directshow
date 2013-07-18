@@ -453,7 +453,18 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR szCmdLine, int sw)
     if(!AppInit(hInst,hPrev,sw))
         return FALSE;
 
-    /*
+	// hkimata added start
+    gcap.fWantPreview = !gcap.fWantPreview;
+    if(gcap.fWantPreview)
+    {
+        BuildPreviewGraph();
+        StartPreview();
+    }
+    else
+        StopPreview();
+	// hkimata added end
+
+	/*
     * Polling messages from event queue
     */
     for(;;)
